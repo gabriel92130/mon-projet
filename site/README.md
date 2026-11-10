@@ -6,9 +6,9 @@ Refonte de la page d'accueil (`index.html`) faite avec le skill **UI/UX Pro Max*
 
 | Avant | Après |
 |---|---|
-| `index.html` de 12 Mo (169 images en base64 dans le HTML) | HTML de ~50 Ko + images séparées dans `frames/`, chargées en arrière-plan |
+| `index.html` de 12 Mo (169 images en base64 dans le HTML) | HTML de ~50 Ko, la 3D est générée par le code (aucune image à charger) |
 | Écran de chargement bloquant jusqu'à 100 % | Le contenu s'affiche tout de suite |
-| ~9 écrans de défilement avant le catalogue | Hero avec boutons directs, animation limitée à la section « Notre méthode » |
+| Séquence de 169 images (8 Mo) | Expérience 3D temps réel « Vers l'horizon » : voiture de sport originale, scan laser, nuit → lever de soleil, choix de teinte |
 | Emojis utilisés comme icônes | Icônes SVG (Lucide + logos officiels Simple Icons) |
 | Menu caché sur mobile | Menu burger + barre « Appeler / WhatsApp » fixe en bas |
 | 43 véhicules affichés d'un coup | Recherche, filtres, tri, « Afficher plus » |
@@ -25,8 +25,16 @@ Dans le dossier `www/` du serveur, envoyer :
 
 - `index.html` (remplace l'ancien : **gardez une copie de l'ancien avant**)
 - le dossier `assets/` (styles, script, logo)
-- le dossier `frames/` (images de l'animation)
 
 Ne touchez à rien d'autre : `api/`, `admin/`, `data/`, `photos/`, `commande.html`
 continuent de fonctionner. La page lit toujours le catalogue depuis `/api/catalogue.php`,
 et le bouton « Réserver » mène toujours à `/commande.html?vehicleId=…`.
+
+## L'expérience 3D
+
+- Fichier `assets/scene.js` (Three.js, chargé depuis cdn.jsdelivr.net).
+- 5 chapitres pilotés par le défilement : intro (phares), inspection (scan laser + repères),
+  garantie (feux arrière), en route (compteur de vitesse), lever de soleil + boutons.
+- Le visiteur peut changer la couleur de la voiture.
+- Sans WebGL, ou si le visiteur a activé « réduire les animations », la section s'affiche
+  en version fixe lisible : rien n'est perdu.

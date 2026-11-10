@@ -5,8 +5,6 @@
   const PHONE_WA = '33759626982';
   const EMAIL = 'contact@gs-horizon.com';
   const API_URL = '/api/catalogue.php';
-  const FRAME_COUNT = 169;
-  const FRAME_URL = (i) => `/frames/${String(i + 1).padStart(3, '0')}.webp`;
   const PAGE_SIZE = 9;
 
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -47,7 +45,7 @@
       navLinks.forEach((a) => a.classList.toggle('is-current', a.getAttribute('href') === '#' + en.target.id));
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
-  ['catalogue', 'process', 'rachat', 'avis', 'contact'].forEach((id) => { const el = document.getElementById(id); if (el) spy.observe(el); });
+  ['xp', 'catalogue', 'rachat', 'avis', 'contact'].forEach((id) => { const el = document.getElementById(id); if (el) spy.observe(el); });
 
   /* ------------------------------------------------------------------
      Apparition au scroll
@@ -57,100 +55,6 @@
     : null;
   const reveal = (els) => { if (!revealIO) return; els.forEach((el) => { el.classList.add('reveal'); revealIO.observe(el); }); };
   reveal($$('.section-head, .rating-summary, .review, .social-card, .split > *'));
-
-  /* ------------------------------------------------------------------
-     Section "Notre méthode" : séquence d'images pilotée au scroll
-  ------------------------------------------------------------------ */
-  (function processAnimation() {
-    const track = $('#process-track');
-    const canvas = $('#frames-canvas');
-    if (!track || !canvas) return;
-    const ctx = canvas.getContext('2d');
-    const steps = $$('.step', track);
-    const bar = $('#process-bar');
-    const frames = new Array(FRAME_COUNT);
-    let current = -1;
-    let wanted = 0;
-
-    const resize = () => {
-      const r = canvas.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.round(r.width * dpr);
-      canvas.height = Math.round(r.height * dpr);
-      current = -1;
-      draw(wanted);
-    };
-
-    const nearestLoaded = (i) => {
-      for (let d = 0; d < FRAME_COUNT; d++) {
-        if (frames[i - d]) return i - d;
-        if (frames[i + d]) return i + d;
-      }
-      return -1;
-    };
-
-    function draw(i) {
-      const idx = nearestLoaded(i);
-      if (idx < 0 || idx === current) return;
-      current = idx;
-      const img = frames[idx];
-      const cw = canvas.width, ch = canvas.height;
-      const s = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
-      const w = img.naturalWidth * s, h = img.naturalHeight * s;
-      ctx.clearRect(0, 0, cw, ch);
-      ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
-    }
-
-    const load = (i) => new Promise((res) => {
-      const img = new Image();
-      img.decoding = 'async';
-      img.onload = () => { frames[i] = img; if (Math.abs(i - wanted) < 3 || current < 0) draw(wanted); res(); };
-      img.onerror = res;
-      img.src = FRAME_URL(i);
-    });
-
-    if (reducedMotion) {
-      // Mouvement réduit : une seule image représentative, pas d'animation
-      wanted = 120;
-      load(120);
-      new ResizeObserver(resize).observe(canvas);
-      return;
-    }
-
-    const update = () => {
-      const r = track.getBoundingClientRect();
-      const total = r.height - window.innerHeight;
-      const p = Math.min(1, Math.max(0, -r.top / (total || 1)));
-      wanted = Math.min(FRAME_COUNT - 1, Math.floor(p * FRAME_COUNT));
-      draw(wanted);
-      bar.style.width = (p * 100).toFixed(1) + '%';
-      const active = Math.min(steps.length - 1, Math.floor(p * steps.length));
-      steps.forEach((s, k) => s.classList.toggle('is-active', k === active));
-    };
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => { update(); ticking = false; });
-    }, { passive: true });
-    new ResizeObserver(resize).observe(canvas);
-
-    // Chargement progressif : on commence quand la section approche (ne bloque pas l'affichage)
-    const start = async () => {
-      await load(0);
-      const order = [];
-      for (let step = 16; step >= 1; step = Math.floor(step / 2)) {
-        for (let i = 0; i < FRAME_COUNT; i += step) if (!order.includes(i)) order.push(i);
-      }
-      const queue = order.filter((i) => i !== 0);
-      const worker = async () => { while (queue.length) await load(queue.shift()); };
-      await Promise.all([worker(), worker(), worker(), worker()]);
-    };
-    const io = new IntersectionObserver((en) => {
-      if (en[0].isIntersecting) { io.disconnect(); start(); update(); }
-    }, { rootMargin: '600px 0px' });
-    io.observe(track);
-  })();
 
   /* ------------------------------------------------------------------
      Catalogue

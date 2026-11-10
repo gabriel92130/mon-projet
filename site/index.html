@@ -13,8 +13,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="preload" as="image" href="/frames/001.webp"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,800;1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/styles.css"/>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"AutoDealer","name":"GS HORIZON","telephone":"+33759626982","email":"contact@gs-horizon.com","url":"https://gs-horizon.com","image":"https://gs-horizon.com/assets/logo.jpg",
@@ -79,7 +78,7 @@
     </a>
     <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
       <a href="#catalogue">Véhicules</a>
-      <a href="#process">Notre méthode</a>
+      <a href="#xp">L'expérience</a>
       <a href="#rachat">Rachat</a>
       <a href="#avis">Avis</a>
       <a href="#contact">Contact</a>
@@ -98,83 +97,89 @@
 
 <main id="top">
 
-<!-- ═══ HERO ═══ -->
-<section class="hero" aria-labelledby="hero-title">
-  <div class="container hero-grid">
-    <div class="hero-copy">
+<!-- ═══ EXPÉRIENCE 3D « VERS L'HORIZON » ═══ -->
+<section class="xp" id="xp" aria-label="Présentation GS HORIZON">
+  <div class="xp-stage">
+    <canvas id="xp-canvas" aria-hidden="true"></canvas>
+    <div class="xp-vignette" aria-hidden="true"></div>
+
+    <!-- Chapitre 0 : intro -->
+    <div class="chap chap-intro is-on" data-chap="0">
       <p class="eyebrow">Thoiry · Yvelines · Île-de-France</p>
-      <h1 id="hero-title" class="hero-title">Votre prochain véhicule, <span class="accent">contrôlé</span> et garanti.</h1>
-      <p class="hero-lead">Achat, vente et rachat de véhicules neufs et d'occasion. Chaque voiture est révisée, livrée avec son historique certifié et une garantie de 12&nbsp;mois.</p>
+      <h1 class="xp-title">
+        <span class="line"><span>Votre prochaine</span></span>
+        <span class="line"><span>voiture vous attend</span></span>
+        <span class="line"><span>à <em>l'horizon.</em></span></span>
+      </h1>
+      <p class="xp-lead">Achat, vente et rachat de véhicules neufs et d'occasion. Révisés, garantis 12 mois, livrés avec leur historique certifié.</p>
       <div class="hero-ctas">
-        <a href="#catalogue" class="btn btn-primary btn-lg">
-          Voir les véhicules
-          <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-        </a>
+        <a href="#catalogue" class="btn btn-primary btn-lg">Voir les véhicules <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         <a href="#rachat" class="btn btn-ghost btn-lg">Faire estimer ma voiture</a>
       </div>
-      <ul class="trust-row" aria-label="Chiffres clés">
+    </div>
+
+    <!-- Chapitre 1 : inspection -->
+    <div class="chap chap-side" data-chap="1">
+      <p class="chap-num">01 — Inspection</p>
+      <h2 class="chap-title">Chaque véhicule passe au scanner.</h2>
+      <p>Moteur, freins, suspensions, carrosserie : tout est contrôlé et révisé avant la vente. Aucune mauvaise surprise.</p>
+    </div>
+    <div class="callout" data-anchor="2.05,0.95,0"><span class="dot"></span><span class="tag">Moteur révisé</span></div>
+    <div class="callout" data-anchor="1.35,0.36,0.98"><span class="dot"></span><span class="tag">Freins contrôlés</span></div>
+    <div class="callout" data-anchor="-1.35,0.62,0.95"><span class="dot"></span><span class="tag">Suspensions</span></div>
+    <div class="callout" data-anchor="-0.4,1.42,0"><span class="dot"></span><span class="tag">Historique Histovec</span></div>
+
+    <!-- Chapitre 2 : garantie -->
+    <div class="chap chap-side chap-right" data-chap="2">
+      <p class="chap-num">02 — Garantie</p>
+      <h2 class="chap-title"><span class="big">12</span> mois de garantie.</h2>
+      <p>Valable en France et partout en Europe. Kilométrage certifié, carnet d'entretien vérifié, historique officiel Histovec.</p>
+    </div>
+
+    <!-- Chapitre 3 : en route -->
+    <div class="chap chap-side" data-chap="3">
+      <p class="chap-num">03 — En route</p>
+      <h2 class="chap-title">166 conducteurs ont déjà pris la route.</h2>
+      <ul class="xp-stats">
         <li><strong>4,8<svg class="ic star" aria-hidden="true"><use href="#i-star"/></svg></strong><span>117 avis clients</span></li>
-        <li><strong>166</strong><span>véhicules vendus</span></li>
-        <li><strong>12 mois</strong><span>de garantie</span></li>
         <li><strong>24 h</strong><span>offre de rachat</span></li>
+        <li><strong>IDF</strong><span>livraison &amp; déplacement</span></li>
       </ul>
     </div>
-    <div class="hero-visual">
-      <div class="studio">
-        <img src="/frames/001.webp" alt="Véhicule présenté en studio par GS HORIZON" width="1440" height="1440" fetchpriority="high"/>
-        <div class="studio-chip chip-a">
-          <svg class="ic" aria-hidden="true"><use href="#i-shield-check"/></svg>
-          <div><strong>Garantie 12 mois</strong><span>France &amp; Europe</span></div>
-        </div>
-        <div class="studio-chip chip-b">
-          <svg class="ic" aria-hidden="true"><use href="#i-file-check"/></svg>
-          <div><strong>Histovec certifié</strong><span>Kilométrage vérifié</span></div>
-        </div>
-      </div>
+    <div class="gauge" data-chap="3" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" class="gauge-track"/><circle cx="50" cy="50" r="40" class="gauge-fill" id="xp-gauge"/></svg>
+      <div class="gauge-val"><span id="xp-speed">0</span><small>km/h</small></div>
     </div>
-  </div>
-</section>
 
-<!-- ═══ PROCESS (scrollytelling) ═══ -->
-<section class="process" id="process" aria-labelledby="process-title">
-  <div class="process-track" id="process-track">
-    <div class="process-sticky">
-      <div class="container process-grid">
-        <div class="process-copy">
-          <p class="eyebrow">Notre méthode</p>
-          <h2 id="process-title" class="section-title">Rien n'est laissé au hasard.</h2>
-          <ol class="steps" id="steps">
-            <li class="step is-active">
-              <span class="step-num">01</span>
-              <div>
-                <h3>Sélection rigoureuse</h3>
-                <p>Nous choisissons des véhicules neufs et d'occasion au juste prix, sans antécédent caché.</p>
-              </div>
-            </li>
-            <li class="step">
-              <span class="step-num">02</span>
-              <div>
-                <h3>Révision complète</h3>
-                <p>Moteur, freins, suspensions : chaque véhicule est entièrement révisé avant la vente.</p>
-              </div>
-            </li>
-            <li class="step">
-              <span class="step-num">03</span>
-              <div>
-                <h3>Historique &amp; garantie</h3>
-                <p>Rapport Histovec officiel, carnet contrôlé et garantie 12 mois valable en Europe.</p>
-              </div>
-            </li>
-          </ol>
-          <div class="progress" aria-hidden="true"><span id="process-bar"></span></div>
-        </div>
-        <div class="process-visual">
-          <div class="studio studio-canvas">
-            <canvas id="frames-canvas" role="img" aria-label="Animation : le véhicule se démonte pour montrer les pièces révisées"></canvas>
-          </div>
-        </div>
+    <!-- Chapitre 4 : lever de soleil -->
+    <div class="chap chap-final" data-chap="4">
+      <p class="chap-num">GS HORIZON</p>
+      <h2 class="xp-title xp-title-final">Trouvez la vôtre.</h2>
+      <div class="hero-ctas">
+        <a href="#catalogue" class="btn btn-primary btn-lg">Voir les véhicules disponibles <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a href="#rachat" class="btn btn-ghost btn-lg">Faire racheter ma voiture</a>
       </div>
     </div>
+
+    <!-- Commandes -->
+    <div class="xp-paint" role="group" aria-label="Couleur de la carrosserie">
+      <span class="xp-paint-label">Teinte · <span id="xp-paint-name">Noir intense</span></span>
+      <div class="swatches">
+        <button data-paint="#1b1d23" aria-label="Noir intense" aria-pressed="true" style="--c:#16161a"></button>
+        <button data-paint="#e9e9ec" aria-label="Blanc nacré" aria-pressed="false" style="--c:#ededf0"></button>
+        <button data-paint="#ffc400" aria-label="Jaune Horizon" aria-pressed="false" style="--c:#ffd60a"></button>
+        <button data-paint="#a10d12" aria-label="Rouge rubis" aria-pressed="false" style="--c:#b3141a"></button>
+        <button data-paint="#0e2a5c" aria-label="Bleu nuit" aria-pressed="false" style="--c:#1d3f80"></button>
+      </div>
+    </div>
+    <nav class="xp-rail" aria-label="Chapitres">
+      <button data-rail="0" aria-current="step"><span>Intro</span></button>
+      <button data-rail="1" aria-current="false"><span>Inspection</span></button>
+      <button data-rail="2" aria-current="false"><span>Garantie</span></button>
+      <button data-rail="3" aria-current="false"><span>En route</span></button>
+      <button data-rail="4" aria-current="false"><span>Horizon</span></button>
+    </nav>
+    <div class="xp-scroll" aria-hidden="true"><span>Défilez</span><i></i></div>
   </div>
 </section>
 
@@ -505,6 +510,8 @@
   </div>
 </dialog>
 
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <script src="/assets/app.js" defer></script>
+<script type="module" src="/assets/scene.js"></script>
 </body>
 </html>
