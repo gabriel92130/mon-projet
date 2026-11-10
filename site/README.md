@@ -6,7 +6,7 @@ Refonte de la page d'accueil (`index.html`) faite avec le skill **UI/UX Pro Max*
 
 | Avant | Après |
 |---|---|
-| `index.html` de 12 Mo (169 images en base64 dans le HTML) | HTML de ~60 Ko + images séparées dans `frames/`, chargées en arrière-plan |
+| `index.html` de 12 Mo (169 images en base64 dans le HTML) | HTML de ~50 Ko + images séparées dans `frames/`, chargées en arrière-plan |
 | Écran de chargement bloquant jusqu'à 100 % | Le contenu s'affiche tout de suite |
 | ~9 écrans de défilement avant le catalogue | Hero avec boutons directs, animation limitée à la section « Notre méthode » |
 | Emojis utilisés comme icônes | Icônes SVG (Lucide + logos officiels Simple Icons) |
