@@ -8,7 +8,7 @@ Refonte de la page d'accueil (`index.html`) faite avec le skill **UI/UX Pro Max*
 |---|---|
 | `index.html` de 12 Mo (169 images en base64 dans le HTML) | HTML de ~50 Ko, la 3D est générée par le code (aucune image à charger) |
 | Écran de chargement bloquant jusqu'à 100 % | Le contenu s'affiche tout de suite |
-| Séquence de 169 images (8 Mo) | Expérience 3D temps réel « Vers l'horizon » : voiture de sport originale, scan laser, nuit → lever de soleil, choix de teinte |
+| Séquence de 169 images (8 Mo) | Expérience 3D temps réel « Vers l'horizon » : compacte sportive inspirée d'une 308 GT Line (sans logo), scan laser, nuit → lever de soleil, choix de teinte |
 | Emojis utilisés comme icônes | Icônes SVG (Lucide + logos officiels Simple Icons) |
 | Menu caché sur mobile | Menu burger + barre « Appeler / WhatsApp » fixe en bas |
 | 43 véhicules affichés d'un coup | Recherche, filtres, tri, « Afficher plus » |
